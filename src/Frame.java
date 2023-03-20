@@ -17,14 +17,17 @@ public class Frame extends JFrame implements ActionListener  {
     private Random random = new Random();
     final private JButton [] gridButtons = new JButton[9];
 
-    private JPanel turnPanel;
+    private JLabel turnLabel;
+
+
+    private Color color1 = new Color(128, 203, 107);
+    private Color color2 = new Color(58, 114, 48);
 
     public Frame() {
         // Set up the title screen
         this.setTitle("Title Screen");
         this.setSize(1920 , 1080);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         this.getContentPane().add(getTitleScreen(), null);
         this.validate();
         this.setVisible(true);
@@ -35,6 +38,9 @@ public class Frame extends JFrame implements ActionListener  {
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBounds(0,0,1920,1080);
+        panel.setBackground(color2);
+        var border = BorderFactory.createLineBorder(color1,10);
+        panel.setBorder(border);
 
         var settingsBtn = new JButton("Settings");
         settingsBtn.setBounds(1920/2 -100,1080/2 - 200,200,50);
@@ -57,6 +63,8 @@ public class Frame extends JFrame implements ActionListener  {
         });
 
         isReady = false;
+        playerOTurn = false;
+        playerXTurn = false;
         return panel;
     }
 
@@ -86,24 +94,46 @@ public class Frame extends JFrame implements ActionListener  {
         var gamePanel = new JPanel();
         gamePanel.setLayout(null);
         gamePanel.setBounds(0,0,1920,1080);
+        gamePanel.setLayout(null);
 
-        this.turnPanel = new JPanel();
+        var border = BorderFactory.createLineBorder(color1,10);
+        gamePanel.setBackground(color2);
+        gamePanel.setBorder(border);
+
+        var turnPanel = new JPanel();
         turnPanel.setBounds(1270,448,500,500);
         turnPanel.setBackground(new Color(19, 68, 12));
         turnPanel.setLayout(new BorderLayout());
 
+        turnPanel.setBorder(border);
+
         var topPanel = new JPanel();
-        topPanel.setBackground(new Color(128, 203, 107));
+        topPanel.setBackground(color1);
         topPanel.setPreferredSize(new Dimension(100,100));
 
-        var label = new JLabel("TURN");
-        label.setFont(new Font("Arial",Font.BOLD, 80));
-        label.setForeground(new Color(19, 68, 12));
-        topPanel.add(label);
+        var label1 = new JLabel("TURN");
+        label1.setFont(new Font("Arial",Font.BOLD, 80));
+        label1.setForeground(new Color(19, 68, 12));
+        topPanel.add(label1);
+
+        var bottomPanel = new JPanel();
+        bottomPanel.setOpaque(false);
+        bottomPanel.setLayout(null);
+
+        this.turnLabel = new JLabel();
+        turnLabel.setFont(new Font("Arial", Font.BOLD,280));
+
+        turnLabel.setForeground(color1);
+        turnLabel.setBounds(55,0,400,400);
+        turnLabel.setHorizontalAlignment(SwingConstants.CENTER); // center align the text
+        turnLabel.setVerticalTextPosition(SwingConstants.CENTER);
 
 
+        updateTurnPanel();
+        bottomPanel.add(turnLabel);
 
         turnPanel.add(topPanel,BorderLayout.NORTH);
+        turnPanel.add(bottomPanel, BorderLayout.CENTER);
         gamePanel.add(turnPanel);
 
 
@@ -131,6 +161,9 @@ public class Frame extends JFrame implements ActionListener  {
             gridButtons[i] = new JButton();
             gridButtons[i].addActionListener(this);
             gridButtons[i].setFocusable(false);
+            gridButtons[i].setBackground(color2);
+            gridButtons[i].setBorder(border);
+
             gridButtons[i].setFont(new Font("Arial",Font.BOLD, 40));
             gamePadding.add(gridButtons[i]);
 
@@ -141,7 +174,15 @@ public class Frame extends JFrame implements ActionListener  {
     }
 
     public void updateTurnPanel(){
-
+        if (!playerOTurn && !playerXTurn){
+            turnLabel.setText("/");
+        }
+        else if (playerXTurn) {
+            turnLabel.setText("X");
+        }
+        else if (playerOTurn) {
+            turnLabel.setText("O");
+        }
     }
 
     public void initialTurn(){
@@ -162,6 +203,7 @@ public class Frame extends JFrame implements ActionListener  {
             if (!isReady){
                 isReady = true;
                 initialTurn();
+                updateTurnPanel();
                 beginBtn.setText("reset");
             } else {
                 reset();
@@ -179,7 +221,10 @@ public class Frame extends JFrame implements ActionListener  {
                             gridButtons[i].setForeground(new Color(44, 130, 197));
 
                             if(checkWin("X")){
-
+                                JOptionPane.showMessageDialog(this, "u won","epic message",JOptionPane.PLAIN_MESSAGE);
+                            }
+                            else {
+                                updateTurnPanel();
                             }
                         }
 
@@ -190,7 +235,10 @@ public class Frame extends JFrame implements ActionListener  {
                             gridButtons[i].setForeground(new Color(238, 27, 27));
 
                             if(checkWin("O")){
-
+                                JOptionPane.showMessageDialog(this, "you won","victory dance",JOptionPane.PLAIN_MESSAGE);
+                            }
+                            else {
+                                updateTurnPanel();
                             }
 
                         }
