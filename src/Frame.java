@@ -33,7 +33,6 @@ public class Frame extends JFrame implements ActionListener  {
         this.getContentPane().add(getTitleScreen(), null);
         this.validate();
         this.setVisible(true);
-
     }
 
     private JPanel getTitleScreen(){
@@ -45,17 +44,25 @@ public class Frame extends JFrame implements ActionListener  {
         panel.setBorder(border);
 
         var settingsBtn = new JButton("Settings");
-        settingsBtn.setBounds(1920/2 -100,1080/2 - 200,200,50);
+        settingsBtn.setBounds(1920/2 -100,1080/2 - 100,200,50);
         settingsBtn.setBackground(color1);
-        settingsBtn.setForeground(color2
-        );
+        settingsBtn.setForeground(color2);
+
         var playBtn = new JButton("Play");
-        playBtn.setBounds(1920/2 -100,1080/2 -100,200,50);
+        playBtn.setBounds(1920/2 -100,1080/2 -200,200,50);
         playBtn.setBackground(color1);
         playBtn.setForeground(color2);
 
+        var quitBtn = new JButton("Quit");
+        quitBtn.setBounds(1920/2 -100,1080/2 ,200,50);
+        quitBtn.setBackground(color1);
+        quitBtn.setForeground(color2);
+
+
         panel.add(settingsBtn );
         panel.add(playBtn) ;
+        panel.add(quitBtn);
+
 
         settingsBtn.addActionListener(e -> {
             this.getContentPane().removeAll(); // Remove the Settings and Play buttons
@@ -70,6 +77,11 @@ public class Frame extends JFrame implements ActionListener  {
             this.validate();
             cueAudio("click");
         });
+
+        quitBtn.addActionListener(e -> {
+            System.exit(0);
+        });
+
 
         isReady = false;
         playerOTurn = false;
