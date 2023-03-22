@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e8a87b22-1c89-4a7a-95c9-f28443b8c3f1" name="Changes" comment="">
+    <list default="true" id="e8a87b22-1c89-4a7a-95c9-f28443b8c3f1" name="Changes" comment="commit 1.1.1">
+      <change afterPath="$PROJECT_DIR$/src/Audio/click.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Audio/error.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Audio/success.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AudioGettable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AudioPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SimpleAudioPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
@@ -46,6 +52,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Rayyan &amp; Mysha\IdeaProjects\TicTacToe\src\Label" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -76,6 +85,14 @@
       <option name="presentableId" value="Default" />
       <updated>1678911738281</updated>
     </task>
+    <task id="LOCAL-00001" summary="commit 1.1.1">
+      <created>1679344857020</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679344857020</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,5 +105,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit 1.1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 1.1.1" />
   </component>
 </project>

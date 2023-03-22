@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        var frame = new Frame();
+        var frame = new Frame(new SimpleAudioPlayer());
 
     }
 }

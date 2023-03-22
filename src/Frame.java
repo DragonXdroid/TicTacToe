@@ -9,6 +9,8 @@ public class Frame extends JFrame implements ActionListener  {
     
     private boolean isReady;
 
+    private SimpleAudioPlayer audio;
+
     private boolean playerXTurn;
 
     private boolean playerOTurn;
@@ -19,12 +21,12 @@ public class Frame extends JFrame implements ActionListener  {
 
     private JLabel turnLabel;
 
-
     private Color color1 = new Color(128, 203, 107);
     private Color color2 = new Color(58, 114, 48);
 
-    public Frame() {
-        // Set up the title screen
+    public Frame(SimpleAudioPlayer audioPlayer) {
+
+        this.audio = audioPlayer;
         this.setTitle("Title Screen");
         this.setSize(1920 , 1080);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,8 +46,13 @@ public class Frame extends JFrame implements ActionListener  {
 
         var settingsBtn = new JButton("Settings");
         settingsBtn.setBounds(1920/2 -100,1080/2 - 200,200,50);
+        settingsBtn.setBackground(color1);
+        settingsBtn.setForeground(color2
+        );
         var playBtn = new JButton("Play");
         playBtn.setBounds(1920/2 -100,1080/2 -100,200,50);
+        playBtn.setBackground(color1);
+        playBtn.setForeground(color2);
 
         panel.add(settingsBtn );
         panel.add(playBtn) ;
@@ -54,12 +61,14 @@ public class Frame extends JFrame implements ActionListener  {
             this.getContentPane().removeAll(); // Remove the Settings and Play buttons
             this.getContentPane().add(getSettingsPanel(), null); // Add the Settings page
             this.validate();
+            cueAudio("click");
         });
 
         playBtn.addActionListener(e -> {
-            this.getContentPane().removeAll(); // Remove the Settings and Play buttons
-            this.getContentPane().add(getGamePanel(), null); // Add the Settings page
+            this.getContentPane().removeAll();
+            this.getContentPane().add(getGamePanel(), null);
             this.validate();
+            cueAudio("click");
         });
 
         isReady = false;
@@ -72,18 +81,22 @@ public class Frame extends JFrame implements ActionListener  {
         // Create the Settings page
         JPanel panel = new JPanel();
         panel.setLayout(null);
+        panel.setBackground(color2);
+        var border = BorderFactory.createLineBorder(color1,10);
+        panel.setBorder(border);
         panel.setBounds(0,0,1920,1080);
 
-
-        // Create the Back button and add it to the Settings page
         var backBtn = new JButton("Back");
         backBtn.setBounds(100,50,200,50);
+        backBtn.setBackground(color1);
+        backBtn.setForeground(color2);
         panel.add(backBtn);
 
         backBtn.addActionListener(e -> {
             this.getContentPane().removeAll(); // Remove the Settings page
             this.getContentPane().add(getTitleScreen(),null); // Add the Title Screen
             this.validate();
+            cueAudio("click");
         });
 
         return panel;
@@ -94,7 +107,6 @@ public class Frame extends JFrame implements ActionListener  {
         var gamePanel = new JPanel();
         gamePanel.setLayout(null);
         gamePanel.setBounds(0,0,1920,1080);
-        gamePanel.setLayout(null);
 
         var border = BorderFactory.createLineBorder(color1,10);
         gamePanel.setBackground(color2);
@@ -137,19 +149,23 @@ public class Frame extends JFrame implements ActionListener  {
         gamePanel.add(turnPanel);
 
 
-
         var backBtn = new JButton("Back");
         backBtn.setBounds(100,50,200,50);
+        backBtn.setBackground(color1);
+        backBtn.setForeground(new Color(19, 68, 12));
         backBtn.addActionListener(e -> {
             this.getContentPane().removeAll(); // Remove the Settings page
             this.getContentPane().add(getTitleScreen(),null); // Add the Title Screen
             this.validate();
+            cueAudio("click");
         });
         gamePanel.add(backBtn);
 
         this.beginBtn = new JButton("Begin Game");
         beginBtn.setBounds(1500,200,200,50);
         beginBtn.addActionListener(this);
+        beginBtn.setBackground(color1);
+        beginBtn.setForeground(new Color(19, 68, 12));
         gamePanel.add(beginBtn);
 
         JPanel gamePadding = new JPanel();
@@ -161,14 +177,15 @@ public class Frame extends JFrame implements ActionListener  {
             gridButtons[i] = new JButton();
             gridButtons[i].addActionListener(this);
             gridButtons[i].setFocusable(false);
-            gridButtons[i].setBackground(color2);
+            gridButtons[i].setBackground(new Color(19, 68, 12));
             gridButtons[i].setBorder(border);
 
-            gridButtons[i].setFont(new Font("Arial",Font.BOLD, 40));
+            gridButtons[i].setFont(new Font("Arial",Font.BOLD, 160));
             gamePadding.add(gridButtons[i]);
 
         }
-       
+
+        gamePadding.setBorder(border);
         gamePanel.add(gamePadding);
         return gamePanel;
     }
@@ -201,12 +218,14 @@ public class Frame extends JFrame implements ActionListener  {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.beginBtn ) {
             if (!isReady){
+                cueAudio("click");
                 isReady = true;
                 initialTurn();
                 updateTurnPanel();
                 beginBtn.setText("reset");
             } else {
                 reset();
+                cueAudio("click");
             }
         }
 
@@ -218,10 +237,12 @@ public class Frame extends JFrame implements ActionListener  {
                             playerXTurn = false;
                             playerOTurn = true;
                             gridButtons[i].setText("X");
-                            gridButtons[i].setForeground(new Color(44, 130, 197));
+                            cueAudio("click");
+                            gridButtons[i].setForeground(color1);
 
                             if(checkWin("X")){
-                                JOptionPane.showMessageDialog(this, "u won","epic message",JOptionPane.PLAIN_MESSAGE);
+                                cueAudio("success");
+                                JOptionPane.showMessageDialog(this, "you won","win message",JOptionPane.PLAIN_MESSAGE);
                             }
                             else {
                                 updateTurnPanel();
@@ -232,10 +253,12 @@ public class Frame extends JFrame implements ActionListener  {
                             playerOTurn = false;
                             playerXTurn = true;
                             gridButtons[i].setText("O");
-                            gridButtons[i].setForeground(new Color(238, 27, 27));
+                            cueAudio("click");
+                            gridButtons[i].setForeground(color1);
 
                             if(checkWin("O")){
-                                JOptionPane.showMessageDialog(this, "you won","victory dance",JOptionPane.PLAIN_MESSAGE);
+                                cueAudio("success");
+                                JOptionPane.showMessageDialog(this, "you won","win message",JOptionPane.PLAIN_MESSAGE);
                             }
                             else {
                                 updateTurnPanel();
@@ -245,6 +268,7 @@ public class Frame extends JFrame implements ActionListener  {
                     }
                 }
                 else{
+                    cueAudio("error");
                     JOptionPane.showMessageDialog(this, "Press begin to start the game","Error Message",JOptionPane.PLAIN_MESSAGE);
                 }
             }
@@ -295,6 +319,16 @@ public class Frame extends JFrame implements ActionListener  {
 
         // No win found
         return false;
+    }
+
+    public void cueAudio (String str){
+        try {
+            audio.setFileName(str);
+            audio.play();
+        }
+        catch (Exception e) {
+            System.out.println("audio is unable to play");
+        }
     }
 
 }
