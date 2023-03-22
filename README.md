@@ -9,17 +9,12 @@
  
  # Upcoming feature
  -------------------------------------------------------------------
- . 
 AI bot to go against
- . 
 better audio
- . 
 better UI
- . 
-seetings panel 
- . 
+seetings panel  
 UI animations 
- . 
+ 
 connect4 - I may or may not do this considering connect4 is just a bigger  tictactoe. might make it its own application instead.
  
   # Download
