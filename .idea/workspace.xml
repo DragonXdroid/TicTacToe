@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e8a87b22-1c89-4a7a-95c9-f28443b8c3f1" name="Changes" comment="commit 1.1.1">
-      <change afterPath="$PROJECT_DIR$/src/Audio/click.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Audio/error.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Audio/success.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AudioGettable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AudioPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SimpleAudioPlayer.java" afterDir="false" />
+    <list default="true" id="e8a87b22-1c89-4a7a-95c9-f28443b8c3f1" name="Changes" comment="commit 1.2.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679344857020</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit 1.2.0">
+      <created>1679497173388</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679497173388</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -108,6 +108,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit 1.1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 1.1.1" />
+    <MESSAGE value="commit 1.2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 1.2.0" />
   </component>
 </project>
