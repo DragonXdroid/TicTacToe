@@ -19,7 +19,7 @@
  
 - **connect4** - I may or may not do this considering connect4 is just a bigger  tictactoe. might make it its own application instead.
  
- # Downlaod
+ # Download
  -------------------------------------------------------------------
 **1.) press code**
 
