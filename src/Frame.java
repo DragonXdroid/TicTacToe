@@ -98,6 +98,24 @@ public class Frame extends JFrame implements ActionListener  {
         panel.setBorder(border);
         panel.setBounds(0,0,1920,1080);
 
+        var resolutionPanel = new JPanel();
+        resolutionPanel.setLayout(null);
+        resolutionPanel.setBorder(border);
+        resolutionPanel.setBounds(1920/2 -350,1080/2 - 200,700,90);
+        resolutionPanel.setBackground(color2);
+
+
+        var label = new JLabel("Resolution");
+        label.setFont(new Font("Arial",Font.BOLD, 30));
+        label.setBounds(10,0,200,90); // updated bounds
+        label.setBackground(color1);
+        label.setOpaque(true);
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setForeground(color2);
+        resolutionPanel.add(label);
+
+        panel.add(resolutionPanel);
+
         var backBtn = new JButton("Back");
         backBtn.setBounds(100,50,200,50);
         backBtn.setBackground(color1);
