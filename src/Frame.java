@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
@@ -19,10 +20,14 @@ public class Frame extends JFrame implements ActionListener  {
     private Random random = new Random();
     final private JButton [] gridButtons = new JButton[9];
 
+    final private JButton [] resolutionButtons = new JButton[3];
+
     private JLabel turnLabel;
 
     private Color color1 = new Color(128, 203, 107);
     private Color color2 = new Color(58, 114, 48);
+
+    private Border border = BorderFactory.createLineBorder(color1,10);
 
     public Frame(SimpleAudioPlayer audioPlayer) {
 
@@ -98,23 +103,9 @@ public class Frame extends JFrame implements ActionListener  {
         panel.setBorder(border);
         panel.setBounds(0,0,1920,1080);
 
-        var resolutionPanel = new JPanel();
-        resolutionPanel.setLayout(null);
-        resolutionPanel.setBorder(border);
-        resolutionPanel.setBounds(1920/2 -350,1080/2 - 200,700,90);
-        resolutionPanel.setBackground(color2);
+        panel.add(getResolutionPanel());
 
 
-        var label = new JLabel("Resolution");
-        label.setFont(new Font("Arial",Font.BOLD, 30));
-        label.setBounds(10,0,200,90); // updated bounds
-        label.setBackground(color1);
-        label.setOpaque(true);
-        label.setHorizontalAlignment(JLabel.CENTER);
-        label.setForeground(color2);
-        resolutionPanel.add(label);
-
-        panel.add(resolutionPanel);
 
         var backBtn = new JButton("Back");
         backBtn.setBounds(100,50,200,50);
@@ -130,6 +121,58 @@ public class Frame extends JFrame implements ActionListener  {
         });
 
         return panel;
+    }
+
+    private JPanel getResolutionPanel(){
+
+        var resolutionPanel = new JPanel();
+        resolutionPanel.setLayout(null);
+        resolutionPanel.setBorder(border);
+        resolutionPanel.setBounds(1920/2 -350,1080/2 - 200,700,90);
+        resolutionPanel.setBackground(color2);
+
+        var resolutionNameLabel = new JLabel("Resolution");
+        resolutionNameLabel.setFont(new Font("Arial",Font.BOLD, 30));
+        resolutionNameLabel.setBounds(10,0,200,90); // updated bounds
+        resolutionNameLabel.setBackground(color1);
+        resolutionNameLabel.setOpaque(true);
+        resolutionNameLabel.setHorizontalAlignment(JLabel.CENTER);
+        resolutionNameLabel.setForeground(color2);
+
+
+        var resolutionBtnNameLabel = new JLabel();
+        resolutionBtnNameLabel.setFont(new Font("Arial",Font.BOLD, 18));
+        resolutionBtnNameLabel.setBounds(210,10,480,35); // updated bounds
+        resolutionBtnNameLabel.setBackground(new Color(192, 70, 70));
+        resolutionBtnNameLabel.setOpaque(true);
+        resolutionBtnNameLabel.setHorizontalAlignment(JLabel.CENTER);
+        resolutionBtnNameLabel.setForeground(color1);
+        resolutionBtnNameLabel.setText("example");
+
+
+        var resolutionBtnPanel = new JPanel();
+        resolutionBtnPanel.setLayout(new FlowLayout());
+        resolutionBtnPanel.setBackground(new Color(23, 67, 134));
+        resolutionBtnPanel.setBounds(210,40,480,40);
+
+
+
+        String [] resolutionNames  = {"1920x1080","k","k"};
+
+        for ( int i = 0; i < resolutionButtons.length; i++){
+            resolutionButtons[i] = new JButton(resolutionNames[i]);
+            resolutionButtons[i].setFont(new Font("Arial",Font.BOLD,0));
+            resolutionButtons[i].setFocusable(false);
+            resolutionButtons[i].setBackground(new Color(255, 255, 255));
+            resolutionButtons[i].setVerticalAlignment(JButton.CENTER);
+            resolutionBtnPanel.add(resolutionButtons[i]);
+        }
+
+        resolutionPanel.add(resolutionNameLabel);
+        resolutionPanel.add(resolutionBtnNameLabel);
+        resolutionPanel.add(resolutionBtnPanel);
+        return resolutionPanel;
+
     }
 
     private JPanel getGamePanel() {
