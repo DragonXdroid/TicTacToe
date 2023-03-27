@@ -6,7 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8a87b22-1c89-4a7a-95c9-f28443b8c3f1" name="Changes" comment="commit 1.2.1">
+    <list default="true" id="e8a87b22-1c89-4a7a-95c9-f28443b8c3f1" name="Changes" comment="commit 1.2.3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frame.java" afterDir="false" />
     </list>
@@ -107,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679498558106</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit 1.2.3">
+      <created>1679638455759</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679638455759</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,6 +132,7 @@
     <MESSAGE value="commit 1.1.1" />
     <MESSAGE value="commit 1.2.0" />
     <MESSAGE value="commit 1.2.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 1.2.1" />
+    <MESSAGE value="commit 1.2.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 1.2.3" />
   </component>
 </project>

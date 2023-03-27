@@ -37,6 +37,7 @@ public class Frame extends JFrame implements ActionListener  {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().add(getTitleScreen(), null);
         this.validate();
+        this.setMinimumSize(new Dimension(192,108));
         this.setVisible(true);
     }
 
@@ -105,8 +106,6 @@ public class Frame extends JFrame implements ActionListener  {
 
         panel.add(getResolutionPanel());
 
-
-
         var backBtn = new JButton("Back");
         backBtn.setBounds(100,50,200,50);
         backBtn.setBackground(color1);
@@ -157,14 +156,13 @@ public class Frame extends JFrame implements ActionListener  {
 
 
 
-        String [] resolutionNames  = {"1920x1080","k","k"};
+        String [] resolutionNames  = {"1920x1080","1680x1050","k"};
 
-        for ( int i = 0; i < resolutionButtons.length; i++){
+        for (int i = 0; i < resolutionButtons.length; i++) {
             resolutionButtons[i] = new JButton(resolutionNames[i]);
-            resolutionButtons[i].setFont(new Font("Arial",Font.BOLD,0));
+            resolutionButtons[i].setFont(new Font("Arial", Font.BOLD, 0));
             resolutionButtons[i].setFocusable(false);
             resolutionButtons[i].setBackground(new Color(255, 255, 255));
-            resolutionButtons[i].setVerticalAlignment(JButton.CENTER);
             resolutionBtnPanel.add(resolutionButtons[i]);
         }
 
